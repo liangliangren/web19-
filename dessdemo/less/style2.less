@@ -1,0 +1,57 @@
+@color: red;
+@mediaWidth: ~"(max-width:1200px)"; //~后面的内容不被编译
+.box {
+    width: 500px;
+    height: 500px;
+    background: green;
+    .transition
+}
+.transition(@mediaStyle:all; @mediaTime:2s;@mediaType:ease;@mediaDelay:1s){
+    transition:@arguments;
+}
+@media screen and @mediaWidth {
+    .header {
+        color: @color;
+        .box {
+            width: 200px;
+            height: 200px;
+            background: red;
+            .transition
+        }
+    }
+}
+
+.w500{
+    width: 500px;
+    background: yellow;
+}
+
+.box2{
+    width: 200px;
+    height: 200px;
+    background: red;
+    .w500 !important;
+    &:hover{ //继承父级选择器
+        background: green !important;
+    }
+}
+
+.box3{
+    color: red;
+    div& {  //&将选择器的顺序反转
+       color: yellow;
+    }
+}
+div.box3{
+   color: yellow; 
+}
+
+.borderRadius(@radius:50%){  //50%默认值
+    border-radius: @radius;
+}
+.box4{
+    width: 200px;
+    height: 200px;
+    background: red;
+    .borderRadius(20%) //重新定义值覆盖默认值
+}

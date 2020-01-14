@@ -1,0 +1,86 @@
+@color:green;
+@width:200px;  //全局变量
+@bgRed:red;
+.header{
+    color: @color;
+    width:@width;
+    height: 200px;
+    background: @bgRed;
+}
+.content{
+    color: @color;
+}
+.box{
+    @width:400px;   //局部变量   
+    height: 200px;
+    width: @width;
+    background: red;
+}
+//同名变量，局部变量的优先级大于全局变量
+
+.box1 p{
+    color: red;
+}
+
+
+.box1{
+    p{
+       color: yellow; 
+       a{
+           color:@color;
+       }
+    }
+}
+
+
+//.box2{
+//  width: 200px;
+//  height: 200px;
+//  background: red;
+//}
+.text{
+    color: #fff;
+    font-size: 30px;
+}
+.w200{
+     width: 200px;
+}
+
+.box2{
+    .w200;
+    height: 200px;
+    background: red;
+}
+
+//字符串差值
+@imgUrl:"http://127.0.0.1:8020";
+.box3{
+    width: 300px;
+    height: 300px;
+    color:red;
+    background: url("@{imgUrl}/web19/Less/img/06.png") no-repeat;
+}
+
+.witdh(@width){
+    width: @width;
+}
+.height(@height){
+    height: @height;
+}
+
+.a(@width,@height,@bg:red){  //red默认值
+    width: @width;
+    height: @height;
+    background: @bg;
+}
+
+//.box4{
+//.witdh(50%);
+//.height(300px);
+//background: red;  
+//}
+
+.box4{
+  .a(200px,200px,yellow)   //yellow可以将上面的red替换
+}
+
